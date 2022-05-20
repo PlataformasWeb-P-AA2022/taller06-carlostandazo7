@@ -25,6 +25,18 @@ class Paises(Base):
     languages = Column(String)
     is_independent = Column(String)
 
+    def __repr__(self):
+        return "Dato Paises: cldr_display_name: %s capital: %s continent: %s dial: %s itu: %s geoname_id: %s languages: %s is_independent: %s" %(
+            self.cldr_display_name,
+            self.capital,
+            self.continent,
+            self.dial,
+            self.itu,
+            self.geoname_id,
+            self.languages,
+            self.is_independent
+            )
+
 
 Base.metadata.create_all(engine)
 

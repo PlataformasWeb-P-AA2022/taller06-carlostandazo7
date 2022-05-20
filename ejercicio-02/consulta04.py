@@ -9,7 +9,7 @@ engine = create_engine('sqlite:///basepaises.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-#Presentar todos los países del continente americano
+#Presentar los países ordenados por la capital, siempre que el país pertenezca a Europa
 
-paises = session.query(Paises).filter(Paises.continent.in_(['NA', 'SA'])).order_by(Paises.cldr_display_name).all()
+paises = session.query(Paises).filter(Paises.continent == "EU").order_by(Paises.capital).all()
 print (paises)

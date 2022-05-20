@@ -9,7 +9,7 @@ engine = create_engine('sqlite:///basepaises.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-#Presentar todos los países del continente americano
+#Presentar todos los países que tengan en su cadena de nombre de país "uador" o en su cadena de capital "ito".
 
-paises = session.query(Paises).filter(Paises.continent.in_(['NA', 'SA'])).order_by(Paises.cldr_display_name).all()
+paises = session.query(Paises).filter(or_(Paises.cldr_display_name.like("%uador%"), Paises.capital.like("%ito"))).all()
 print (paises)
